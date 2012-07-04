@@ -1,0 +1,91 @@
+<html>
+<head>
+
+<script src="validation.js">
+</script>
+<style type="text/css">
+.header
+{
+width:100%;
+text-align:center;
+font-size:36px;
+background-color:green;
+}
+body
+{
+background-color:#E0FFFF;
+}
+table
+{
+border:4px;
+
+margin-left:400px;
+
+
+}
+select
+{
+width:150px;
+background-color:white;
+}
+td
+{
+width:200px;
+}
+button
+{
+
+float:center;
+}
+.left
+{margin-left:400px;
+width:500px;
+}
+.left-center
+{text-align:center;
+
+}
+label
+{
+font-weight:bold;
+}
+button
+{
+background-color:green;
+}
+</style>
+</head>
+<body>
+<form onsubmit=" return fnsubmit();">
+<div class="header">
+Registration form
+</div>
+<table>
+<tr><td>Login ID</td><td><input type="text" id="LoginId"/></td></tr>
+<tr><td>Email</td><td><input type="text" id="Email" style="background-color:yellow;"/></td></tr>
+<tr><td>Name</td><td><input type="text" id="Name" style="background-color:yellow;"/></td></tr>
+<tr><td>Time Zone</td><td>
+<select>
+
+<option name="GMT" value="G">GMT</option>
+<option name="IST" value="G">IST</option>
+</td></tr>
+<tr><td>Homepage</td><td><input type="text" id="Homepage"/></td></tr>
+<tr><td>ABOUT ME</td></tr>
+</table>
+<br>
+<div class ="left">
+<textarea cols='55' rows='12' id="text1">
+</textarea><br>
+<input type="checkbox" id="checkbox1"/> <label for="checkbox1"> Recieve Notification of comments</label><br>
+You will be able to receive notification when somenone comments on your profile<br><br><br>
+<div class="left-center">
+Your password will be mailed to you<br><br><br>
+
+<button type="submit" value="submit">Go</button>
+</div>
+</div>
+
+</form>
+</body>
+</html>

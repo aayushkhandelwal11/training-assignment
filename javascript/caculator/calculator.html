@@ -1,0 +1,75 @@
+<html>
+<head>
+<style type="text/css">
+
+button
+{
+width:45px;
+}
+button.button1
+{
+width:95px;
+}
+button.button2
+{
+height:50px;
+}
+input
+{
+width:200px;
+height:40px;
+
+background-color:yellow;
+}
+.calc
+{
+background-color:grey;
+width:210px;
+padding:10px;
+}
+</style>
+<script src="calculator.js">
+</script>
+</head>
+<body>
+<div id="calculator" class="calc">
+<input type="text" id="t1" value="0" readonly="readonly" />
+<table>
+<tr>
+<td><button type="submit" onclick="mclear()">MC</button></td>
+<td><button type="submit" onclick="madd()">M+</button></td>
+<td><button type="submit" onclick="mminus()">M-</button></td>
+<td><button type="submit" onclick="mtotal()">MR</button></td>
+</tr>
+<tr>
+<td><button type="submit" onclick="clear1()" >C</button></td>
+<td><button type="submit" onclick="toggle()" >+/-</button></td>
+<td><button type="submit" value="1" onclick="perform(this)">/</button></td>
+<td><button type="submit" value="2" onclick="perform(this)">*</button></td>
+</tr>
+<tr>
+<td><button type="submit" value="7" onclick="calculate(this)">7</button></td>
+<td><button type="submit" value="8" onclick="calculate(this)">8</button></td>
+<td><button type="submit" value="9" onclick="calculate(this)">9</button></td>
+<td><button type="submit" value="4" onclick="perform(this)" >-</button></td>
+</tr>
+<tr>
+<td><button type="submit" value="4" onclick="calculate(this)">4</button></td>
+<td><button type="submit" value="5" onclick="calculate(this)">5</button></td>
+<td><button type="submit" value="6" onclick="calculate(this)">6</button></td>
+<td><button type="submit" value="3" onclick="perform(this)">+</button></td>
+</tr>
+<tr>
+<td><button type="submit" value="3" onclick="calculate(this)">3</button></td>
+<td><button type="submit" value="2" onclick="calculate(this)">2</button></td>
+<td><button type="submit" value="1" onclick="calculate(this)">1</button></td>
+<td  rowspan="2"><button type="submit" class="button2" onclick="show1()">=</button></td>
+</tr>
+<tr>
+<td colspan="2"><button type="submit" value="0" class="button1" onclick="calculate(this)">0</button></td>
+<td><button type="submit" onclick="point1()">.</button></td>
+
+</tr>
+</table>
+</div>
+</body>

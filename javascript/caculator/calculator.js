@@ -79,7 +79,7 @@ function show1() {
     acperformed = 1;
 }
 function madd() {
-    cal = mcal + cal;
+    mcal = mcal + cal;
     cal = 0;
 }
 function mminus() {
@@ -87,6 +87,7 @@ function mminus() {
     cal = 0;
 }
 function mtotal() {
+
     document.getElementById("t1").value = mcal;
 }
 function mclear() {

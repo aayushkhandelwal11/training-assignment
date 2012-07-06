@@ -1,0 +1,54 @@
+<html>
+<head>
+<script src="autocoorect.js">
+</script>
+
+<style type="text/css">
+.dih
+{
+width:100px;
+height:100px;
+border-color:black;
+border-width:2px;
+}
+
+.ullist
+{
+position:relative;
+
+border-style:solid;
+border-width:2px;
+border-color:black;
+width:200px;
+padding:0px;
+
+
+}
+li
+{
+list-style:none;
+}
+li:hover
+{
+background-color:yellow;
+}
+li: first-child :hover
+{
+background-color:white;
+}
+input
+{
+width:200px;
+}
+</style>
+</head>
+<body>
+<form id="form1">
+<br>
+
+<ul id="ul1" class="ullist">
+<li><input type="text" id="t1" onkeyup="cal()""></input></li>
+</ul>
+</form>
+</body>
+</html>

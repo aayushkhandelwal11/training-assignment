@@ -1,0 +1,89 @@
+
+1)creating table
+CREATE TABLE training_details(
+    -> name VARCHAR(50) NOT NULL,
+    -> contact_name VARCHAR(50) NOT NULL,
+    -> rollno VARCHAR(50) NOT NULL,
+    -> PRIMARY KEY(rollno)
+    -> );
+Query OK, 0 rows affected (0.13 sec)
+
+mysql> desc training_details;
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| name         | varchar(50) | NO   |     | NULL    |       |
+| contact_name | varchar(50) | NO   |     | NULL    |       |
+| rollno       | varchar(50) | NO   | PRI | NULL    |       |
++--------------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+2)deleting name column
+ALTER TABLE training_details DROP COLUMN name;
+Query OK, 0 rows affected (0.11 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc training_details;
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| contact_name | varchar(50) | NO   |     | NULL    |       |
+| rollno       | varchar(50) | NO   | PRI | NULL    |       |
++--------------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+3)rename contact_name to username
+ alter table training_details change contact_name username varchar (50) ;
+Query OK, 0 rows affected (0.12 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc training_details;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| username | varchar(50) | YES  |     | NULL    |       |
+| rollno   | varchar(50) | NO   | PRI | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+
+
+4) adding last_name and first_name
+ alter table training_details add first_name varchar(50);
+Query OK, 0 rows affected (0.12 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table training_details add last_name varchar(50);
+Query OK, 0 rows affected (0.11 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc training_details;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| username   | varchar(50) | YES  |     | NULL    |       |
+| rollno     | varchar(50) | NO   | PRI | NULL    |       |
+| first_name | varchar(50) | YES  |     | NULL    |       |
+| last_name  | varchar(50) | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+
+
+5)changing datatype of rollno from varchar to int
+
+ alter table training_details change rollno rollno int;
+Query OK, 0 rows affected (0.43 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc training_details;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| username   | varchar(50) | YES  |     | NULL    |       |
+| rollno     | int(11)     | NO   | PRI | 0       |       |
+| first_name | varchar(50) | YES  |     | NULL    |       |
+| last_name  | varchar(50) | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+

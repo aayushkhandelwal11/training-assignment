@@ -46,7 +46,7 @@ function calculation() {
     document.getElementById("t1").value = 0;
 }
 function calculate(src) {
-    if (acperformed == 1 && point == 1) {
+    if (acperformed == 1 && point == 0) {
         cal = 0;
         document.getElementById("t1").value = src.value;
         acperformed = 0;

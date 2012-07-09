@@ -1,0 +1,110 @@
+mysql> create table category(
+    -> category_name varchar(20),
+    -> description varchar(40),
+    -> primary key(category_name)
+    -> );
+Query OK, 0 rows affected (0.08 sec)
+
+mysql> 
+mysql> create table user(
+    -> user_id varchar(20),
+    -> type varchar(20),
+    -> primary key(user_id)
+    -> );
+Query OK, 0 rows affected (0.10 sec)
+
+mysql> 
+mysql> create table article(
+    -> article_name varchar(20),
+    -> user varchar(20),
+    -> category varchar(20),
+    -> primary key(article_name),
+    -> foreign key(category) references category(category_name),
+    -> foreign key(user) references user(user_id)
+    -> );
+Query OK, 0 rows affected (0.09 sec)
+
+mysql> create table comments(
+    -> comment_id int auto_increment,
+    -> article varchar(20),
+    -> user varchar(20),
+    -> comment_description varchar(100),
+    -> primary key(comment_id),
+    -> foreign key(user) references user(user_id),
+    -> foreign key(article) references article(article_name)
+    -> );
+Query OK, 0 rows affected (0.08 sec)
+
+mysql> 
+mysql> insert into category values("Geeks","About coding");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into category values("tutorials","Learn something new");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into category values("Gadgets","About new gadgets");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> 
+mysql> insert into user values("Aayush","Admin");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into user values("Apoorv","Normal");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into user values("Kuldeep","Admin");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into user values("Nishant","Normal");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> 
+mysql> insert into article values("Samsung S3","Aayush","Gadgets");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into article values("Iphone 5","Aayush","Gadgets");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into article values("auto increment","Apoorv","tutorial");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into article values("Stacks","Kuldeep","geeks");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into article values("Queues","Nishant","Geeks");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> 
+mysql> insert into comments values(1,"Samsung S3","Kuldeep","I want one");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into comments values(2,"Samsung S3","Apoorv","Me 2");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into comments values(3,"Iphone 5","Aayush","Comming Soon");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into comments values(4,"Iphone 5","Nishant","Apple:)");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into comments values(5,"Stacks","Aayush","Nice explanation");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into comments values(6,"Queues","Aayush","Nicely explained");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> query1) to display all articles related with an user;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'query1) to display all articles related with an user' at line 1
+mysql> select comment_description,article_name,user_id,c.user as given_by from comments c right join article a on a.article_name=c.article inner join user u on u.user_id=a.user where u.user_id="Aayush" ; 
++---------------------+--------------+---------+----------+
+| comment_description | article_name | user_id | given_by |
++---------------------+--------------+---------+----------+
+| I want one          | Samsung S3   | Aayush  | Kuldeep  |
+| Me 2                | Samsung S3   | Aayush  | Apoorv   |
+| Comming Soon        | Iphone 5     | Aayush  | Aayush   |
+| Apple:)             | Iphone 5     | Aayush  | Nishant  |
++---------------------+--------------+---------+----------+
+4 rows in set (0.00 sec)
+

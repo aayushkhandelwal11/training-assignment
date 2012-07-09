@@ -1,0 +1,57 @@
+create table category(
+category_name varchar(20),
+description varchar(40),
+primary key(category_name)
+);
+
+create table user(
+user_id varchar(20),
+type varchar(20),
+primary key(user_id)
+);
+
+create table article(
+article_name varchar(20),
+user varchar(20),
+category varchar(20),
+primary key(article_name),
+foreign key(category) references category(category_name),
+foreign key(user) references user(user_id)
+);
+create table comments(
+comment_id int auto_increment,
+article varchar(20),
+user varchar(20),
+comment_description varchar(100),
+primary key(comment_id),
+foreign key(user) references user(user_id),
+foreign key(article) references article(article_name)
+);
+
+insert into category values("Geeks","About coding");
+insert into category values("tutorials","Learn something new");
+insert into category values("Gadgets","About new gadgets");
+
+insert into user values("Aayush","Admin");
+insert into user values("Apoorv","Normal");
+insert into user values("Kuldeep","Admin");
+insert into user values("Nishant","Normal");
+
+insert into article values("Samsung S3","Aayush","Gadgets");
+insert into article values("Iphone 5","Aayush","Gadgets");
+insert into article values("auto increment","Apoorv","tutorial");
+insert into article values("Stacks","Kuldeep","geeks");
+insert into article values("Queues","Nishant","Geeks");
+
+insert into comments values(1,"Samsung S3","Kuldeep","I want one");
+insert into comments values(2,"Samsung S3","Apoorv","Me 2");
+insert into comments values(3,"Iphone 5","Aayush","Comming Soon");
+insert into comments values(4,"Iphone 5","Nishant","Apple:)");
+insert into comments values(5,"Stacks","Aayush","Nice explanation");
+insert into comments values(6,"Queues","Aayush","Nicely explained");
+
+
+select comment_description,article_name,user_id,c.user as given_by from comments c right join article a on a.article_name=c.article inner join user u on u.user_id=a.user where u.user_id="Aayush" ; 
+
+
+

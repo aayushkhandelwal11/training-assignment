@@ -1,0 +1,131 @@
+mysql> create table tastes(
+    -> name varchar(50),
+    -> taste varchar(50),
+    -> primary key(name,taste)
+    -> );
+Query OK, 0 rows affected (0.45 sec)
+
+mysql> 
+mysql> 
+mysql> create table location(
+    -> Lname varchar(50),
+    -> phone int,
+    -> address varchar(50),
+    -> primary key(Lname)
+    -> );
+Query OK, 0 rows affected (0.08 sec)
+
+mysql> 
+mysql> create table sandwiches(
+    -> location varchar(50),
+    -> bread varchar(50),
+    -> filling varchar(50),
+    -> price decimal(4,2),
+    -> primary key(location,bread,filling),
+    -> foreign key(location) references location(Lname) 
+    -> );
+Query OK, 0 rows affected (0.07 sec)
+
+mysql> 
+mysql> insert into tastes value("brown","turkey");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into tastes value("brown","beef");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into tastes value("brown","ham");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into tastes value("green","turkey");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into tastes value("john","cheese");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into tastes value("green","beef");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into tastes value("green","cheese");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> insert into location values("Lincoln",6834523,"Lincoln Place");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into location values("O'Neill's",9727518,"Pierse's street");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into location values("Old Nag",6543216,"Dame st");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into location values("Buttery",6796192,"college ST");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> insert into sandwiches values("Lincoln","rye","ham",1.25);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into sandwiches values("O'Neill's","white","cheese",1.20);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into sandwiches values("O'Neill's","whole","ham",1.25);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into sandwiches values("Old Nag","rye","beef",1.35);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into sandwiches values("Buttery","white","cheese",1.00);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into sandwiches values("O'Neill's","white","turkey",1.35);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into sandwiches values("Buttery","white","ham",1.10);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into sandwiches values("Lincoln","rye","beef",1.35);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into sandwiches values("Lincoln","white","ham",1.30);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into sandwiches values("Old Nag","rye","ham",1.40);
+Query OK, 1 row affected (0.00 sec)
+
+
+
+
+query 1)mysql> select distinct location from sandwiches where filling in (select taste from tastes where name="john");
++-----------+
+| location  |
++-----------+
+| Buttery   |
+| O'Neill's |
++-----------+
+2 rows in set (0.00 sec)
+
+
+query 2) select distinct location from sandwiches s inner join tastes t on t.taste=s.filling where t.name="john";
++-----------+
+| location  |
++-----------+
+| O'Neill's |
+| Buttery   |
++-----------+
+2 rows in set (0.00 sec)
+
+
+query 3)mysql> select location ,count(distinct name) as no_people_eat from sandwiches s join tastes t where t.taste=s.filling group by location; 
++-----------+---------------+
+| location  | no_people_eat |
++-----------+---------------+
+| Buttery   |             3 |
+| Lincoln   |             2 |
+| O'Neill's |             3 |
+| Old Nag   |             2 |
++-----------+---------------+
+4 rows in set (0.01 sec)
+
+

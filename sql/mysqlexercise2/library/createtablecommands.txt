@@ -1,0 +1,55 @@
+Create table Branch(
+Bcode varchar(10),
+Libararian varchar(40),
+Address varchar(30),
+primary key(Bcode)
+);
+
+
+create table titles(
+title varchar(20),
+author varchar(20),
+publisher varchar(20),
+primary key(title)
+);
+
+create table Holdings(
+branch varchar(10),
+title varchar(20),
+copies int,
+primary key(branch,title),
+foreign key(branch) references Brach(Bcode),
+foreign key(title) references titles(title) 
+);
+
+insert into Branch values("B1","John Smith","2 angeles road");
+insert into Branch values("B2","Mary Jones","34 pears street");
+insert into Branch values("B3","Francis","Grange X");
+
+insert into titles values("Sussanah","Ann Brown","Macmillan");
+insert into titles values("How To Fish","Amy Fly","Stop Press");
+insert into titles values("A Hist","David little","Wiley");
+insert into titles values("Computers","Blaise Pascal","Applewoods");
+insert into titles values("The Wife","Ann Brown","Macmillan");
+
+insert into Holdings value("B1","Sussanah",3);
+insert into Holdings value("B1","How To Fish",2);
+insert into Holdings value("B1","A hist",1);
+insert into Holdings value("B2","Computers",2);
+insert into Holdings value("B2","The Wife",3);
+insert into Holdings value("B2","How To Fish",4);
+insert into Holdings value("B3","A Hist",1);
+insert into Holdings value("B3","Computers",4);
+insert into Holdings value("B3","Sussanah",3);
+insert into Holdings value("B3","The Wife",1);
+
+select title from titles where publisher="Macmillan";
+
+select distinct Branch from Holdings where title in(select title from titles where author="Ann Brown");
+
+select distinct Branch from Holdings h inner join titles t on t.title=h.title
+where author="Ann Brown" ;
+
+
+select Branch,sum(copies)  from Holdings group by Branch; 
+

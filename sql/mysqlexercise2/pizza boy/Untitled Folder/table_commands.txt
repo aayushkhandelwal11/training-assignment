@@ -1,0 +1,61 @@
+create table tastes(
+name varchar(50),
+taste varchar(50),
+primary key(name,taste)
+);
+
+
+create table location(
+Lname varchar(50),
+phone int,
+address varchar(50),
+primary key(Lname)
+);
+
+create table sandwiches(
+location varchar(50),
+bread varchar(50),
+filling varchar(50),
+price decimal(4,2),
+primary key(location,bread,filling),
+foreign key(location) references location(Lname) 
+);
+
+insert into tastes value("brown","turkey");
+insert into tastes value("brown","beef");
+insert into tastes value("brown","ham");
+insert into tastes value("green","turkey");
+insert into tastes value("john","cheese");
+insert into tastes value("green","beef");
+insert into tastes value("green","cheese");
+
+
+insert into location values("Lincoln",6834523,"Lincoln Place");
+insert into location values("O'Neill's",9727518,"Pierse's street");
+insert into location values("Old Nag",6543216,"Dame st");
+insert into location values("Buttery",6796192,"college ST");
+
+
+insert into sandwiches values("Lincoln","rye","ham",1.25);
+insert into sandwiches values("O'Neill's","white","cheese",1.20);
+insert into sandwiches values("O'Neill's","whole","ham",1.25);
+insert into sandwiches values("Old Nag","rye","beef",1.35);
+insert into sandwiches values("Buttery","white","cheese",1.00);
+insert into sandwiches values("O'Neill's","white","turkey",1.35);
+insert into sandwiches values("Buttery","white","ham",1.10);
+insert into sandwiches values("Lincoln","rye","beef",1.35);
+insert into sandwiches values("Lincoln","white","ham",1.30);
+insert into sandwiches values("Old Nag","rye","ham",1.40);
+
+
+
+select distinct location from sandwiches where filling in (select taste from tastes where name="john");
+
+select distinct location from sandwiches s inner join tastes t on t.taste=s.filling where t.name="john"; 
+
+select location ,count(distinct name) as no_people_eat from sandwiches s join tastes t where t.taste=s.filling group by location; 
+
+
+
+
+

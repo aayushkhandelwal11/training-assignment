@@ -1,0 +1,132 @@
+mysql> Create table Branch(
+    -> Bcode varchar(10),
+    -> Libararian varchar(40),
+    -> Address varchar(30),
+    -> primary key(Bcode)
+    -> );
+Query OK, 0 rows affected (0.09 sec)
+
+mysql> 
+mysql> 
+mysql> create table titles(
+    -> title varchar(20),
+    -> author varchar(20),
+    -> publisher varchar(20),
+    -> primary key(title)
+    -> );
+Query OK, 0 rows affected (0.08 sec)
+
+mysql> 
+mysql> create table Holdings(
+    -> branch varchar(10),
+    -> title varchar(20),
+    -> copies int,
+    -> primary key(branch,title),
+    -> foreign key(branch) references Brach(Bcode),
+    -> foreign key(title) references titles(title) 
+    -> );
+Query OK, 0 rows affected (0.08 sec)
+
+mysql> 
+mysql> insert into Branch values("B1","John Smith","2 angeles road");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into Branch values("B2","Mary Jones","34 pears street");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into Branch values("B3","Francis","Grange X");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> 
+mysql> insert into titles values("Sussanah","Ann Brown","Macmillan");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into titles values("How To Fish","Amy Fly","Stop Press");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into titles values("A Hist","David little","Wiley");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into titles values("Computers","Blaise Pascal","Applewoods");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into titles values("The Wife","Ann Brown","Macmillan");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> 
+mysql> insert into Holdings value("B1","Sussanah",3);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into Holdings value("B1","How To Fish",2);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into Holdings value("B1","A hist",1);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into Holdings value("B2","Computers",2);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into Holdings value("B2","The Wife",3);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into Holdings value("B2","How To Fish",4);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into Holdings value("B3","A Hist",1);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into Holdings value("B3","Computers",4);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into Holdings value("B3","Sussanah",3);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into Holdings value("B3","The Wife",1);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> 
+mysql> select title from titles where publisher="Macmillan";
++----------+
+| title    |
++----------+
+| Sussanah |
+| The Wife |
++----------+
+2 rows in set (0.00 sec)
+
+mysql> 
+mysql> select distinct Branch from Holdings where title in(select title from titles where author="Ann Brown");
++--------+
+| Branch |
++--------+
+| B1     |
+| B2     |
+| B3     |
++--------+
+3 rows in set (0.00 sec)
+
+mysql> 
+mysql> select distinct Branch from Holdings h inner join titles t on t.title=h.title
+    -> where author="Ann Brown" ;
++--------+
+| Branch |
++--------+
+| B1     |
+| B3     |
+| B2     |
++--------+
+3 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> select Branch,sum(copies)  from Holdings group by Branch; 
++--------+-------------+
+| Branch | sum(copies) |
++--------+-------------+
+| B1     |           6 |
+| B2     |           9 |
+| B3     |           9 |
++--------+-------------+
+3 rows in set (0.00 sec)
+
+

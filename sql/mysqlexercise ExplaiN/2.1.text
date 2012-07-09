@@ -1,0 +1,38 @@
+column names and der description plus use
+1)id it has the value at which no the select is in the query.
+2)select_type
+simple- no subquery ,no union simple select
+PRIMARY- Outermost SELECT in a subquery
+UNION-	Second or later SELECT statement in a UNION
+DEPENDENT UNION-	Second or later SELECT statement in a UNION, dependent on outer query
+UNION RESULT- 	Result of a UNION.
+SUBQUERY- 	First SELECT in subquery
+DEPENDENT SUBQUERY- 	First SELECT in subquery, dependent on outer query
+DERIVED-	Derived table SELECT (subquery in FROM clause)
+UNCACHEABLE SUBQUERY- 	A subquery for which the result cannot be cached and must be re-evaluated for each row of the outer query
+
+3)table -name of the table on which it is applied. can have values like union and derived
+4)type-
+system- the table has only one row
+const-the table has atmost one matching recoed
+eq_ref- One row is read from this table for each combination of rows from the previous tables. It is used when all parts of an index are used by the join and the index is a PRIMARY KEY or UNIQUE NOT NULL index.
+ref- All rows with matching index values are read from this table for each combination of rows from the previous tables. ref is used if the join uses only a leftmost prefix of the key or if the key is not a PRIMARY KEY or UNIQUE index (in other words, if the join cannot select a single row based on the key).
+ref or nul-  ref+MySQL does an extra search for rows that contain NULL values;
+index_merge- output contains a key column
+unique_subquery- the output of subquery is single
+index_subquery- in this the output of subquery is non index value.
+range- if value from a particular range is used
+ALL-A full table scan is done for each combination of rows from the previous tables
+index- This join type is the same as ALL, except that only the index tree is scanned. This usually is faster than ALL because the index file usually is smaller than the data file.
+
+5)possible_keys- The possible_keys column indicates which indexes MySQL can choose from use to find the rows in this table. 
+6)key- The key column indicates the key (index) that MySQL actually decided to use. If MySQL decides to use one of the possible_keys indexes to look up rows, that index is listed as the key value.
+
+
+6)key_len-The key_len column indicates the length of the key that MySQL decided to use. The length is NULL if the key column says NULL. 
+
+7)ref- The ref column shows which columns or constants are compared to the index named in the key column to select rows from the table.
+
+8)rows- The rows column indicates the number of rows MySQL believes it must examine to execute the query.
+
+9)extra information

@@ -1,0 +1,5 @@
+we would be adding index on user_id bcs in this app we have only two type that is video and article so no need to apply on that as it will be time consuming. secondly most of our searching will be based upon the user id as givben in the question 
+
+
+
+tryed with dummy databse as well

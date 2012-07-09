@@ -1,0 +1,3 @@
+2.1 this is because we have to search the whole whole table for the output.
+2.2 no its not optimal. we can add an index on user_id hencforth it willl be optimised.
+

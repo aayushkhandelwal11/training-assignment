@@ -1,0 +1,24 @@
+through inner join
+mysql> explain select distinct Branch from Holdings h inner join titles t on t.title=h.title where author="Ann Brown";
++----+-------------+-------+-------+---------------+---------+---------+------+------+------------------------------------------+
+| id | select_type | table | type  | possible_keys | key     | key_len | ref  | rows | Extra                                    |
++----+-------------+-------+-------+---------------+---------+---------+------+------+------------------------------------------+
+|  1 | SIMPLE      | h     | index | title         | PRIMARY | 34      | NULL |   10 | Using index; Using temporary             |
+|  1 | SIMPLE      | t     | ALL   | PRIMARY       | NULL    | NULL    | NULL |    5 | Using where; Distinct; Using join buffer |
++----+-------------+-------+-------+---------------+---------+---------+------+------+------------------------------------------+
+
+through subquery
+
+mysql> explain
+    -> select distinct Branch from Holdings where title in(select title from titles where author="Ann Brown");
++----+--------------------+----------+-----------------+---------------+---------+---------+------+------+--------------------------+
+| id | select_type        | table    | type            | possible_keys | key     | key_len | ref  | rows | Extra                    |
++----+--------------------+----------+-----------------+---------------+---------+---------+------+------+--------------------------+
+|  1 | PRIMARY            | Holdings | index           | NULL          | PRIMARY | 34      | NULL |   10 | Using where; Using index |
+|  2 | DEPENDENT SUBQUERY | titles   | unique_subquery | PRIMARY       | PRIMARY | 22      | func |    1 | Using where              |
++----+--------------------+----------+-----------------+---------------+---------+---------+------+------+--------------------------+
+2 rows in set (0.00 sec)
+
+when i do it join the type is index and all we have to go through many rows as well. whereas in subquery the type is index and unique_subquery .
+we have to go through less no of rows ass well henceforth subquery  is better then joins
+

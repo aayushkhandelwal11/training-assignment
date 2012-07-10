@@ -1,6 +1,6 @@
 function makevisible(field) {
     document.getElementById("divCheckbox").style.visibility = (field.checked) ? "visible" : "hidden";
-    
+    s
     var j=document.getElementsByName("color1");
     for(i = 0; i<j.length;i++) {
        j[i].checked=field.checked;

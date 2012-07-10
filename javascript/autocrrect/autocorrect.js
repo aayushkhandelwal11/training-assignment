@@ -1,5 +1,4 @@
-function cal() {
-    var myJSON = {"mainStore" : [{"name": "Luigi Damiano"},
+var myJSON = {"mainStore" : [{"name": "Luigi Damiano"},
             {"name": "Zenith Coboro"},
             {"name": "Zig Ziglar"},
             {"name": "Steve Costner"},
@@ -21,6 +20,7 @@ function cal() {
             {"name": "Ari Kama"},
             {"name": "Kenichi Suzuki"},
             {"name": "Rick Olson"}]};
+function cal() {
     var string1 = document.getElementById("t1").value;
     var elem = document.getElementById("ul1"), i, li, p ;
     for (i = elem.childNodes.length - 1; i >= 3; i--) {

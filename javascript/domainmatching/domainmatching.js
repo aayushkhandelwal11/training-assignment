@@ -5,7 +5,11 @@ function fndomain() {
         alert("invalid url");
         return false;
     }
-    if (x.match(/http:/)) {
+    alert("helloa");
+    var str=(x;pattern=/\/([A-z0-9.][.][A-z0-9])[.]([A-z0-9]*[A-z]{3})/,result=str.match(pattern));
+    alert("helloa");
+    alert(regExp.$1);
+    /*if (x.match(/http:/)) {
         x = x.split("http://");
     } else if (x.match(/ftp:/)) {
         x = x.split("ftp://");
@@ -24,5 +28,5 @@ function fndomain() {
         alert("domain is" + x[1]);
         alert("Subdomain is" + x[0]);
     }
-    return true;
+    return true;*/
 }

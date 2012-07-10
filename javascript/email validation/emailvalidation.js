@@ -28,7 +28,7 @@ function fnsubmit() {
      for(i=1;i<5;i++) {
      var field=document.getElementById("text"+i);
     
-    if(field.value.split(' ').join('').length == 0){
+    if(field.value.trim(' ').length == 0){
     alert(field.name+"  can't be left empty");
     return false;
     }
@@ -36,7 +36,7 @@ function fnsubmit() {
     
     var field=document.getElementById("text5");
     
-    if(field.value.length <50)
+    if(field.value.trim(' ').length <50)
     {
     alert("minimum 50 character should be their in about me")
     return false;
@@ -44,7 +44,8 @@ function fnsubmit() {
     
     if(validate_home(document.getElementById("text4").value,"Invalid homePage")&&validate_email(document.getElementById("text2").value,"Invalid email")) { 
         if(isChecked(document.getElementById("checkbox1")))
-        {
+        {  
+           alert(document.getElementById("text1").value)
            return true;
         }
      }

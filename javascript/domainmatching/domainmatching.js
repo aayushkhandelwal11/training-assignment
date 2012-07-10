@@ -5,28 +5,11 @@ function fndomain() {
         alert("invalid url");
         return false;
     }
-    alert("helloa");
-    var str=(x;pattern=/\/([A-z0-9.][.][A-z0-9])[.]([A-z0-9]*[A-z]{3})/,result=str.match(pattern));
-    alert("helloa");
-    alert(regExp.$1);
-    /*if (x.match(/http:/)) {
-        x = x.split("http://");
-    } else if (x.match(/ftp:/)) {
-        x = x.split("ftp://");
-    } else if (x.match(/https:/)) {
-        x = x.split("https://");
-    }
-    if (x[1].match(/www./)) {
-        x = x[1];
-        x = x.split("www.");
-    }
-    x = x[1].split("/");
-    x = x[0].split(".");
-    if (x.length == 2) {
-        alert("domain is" + x[0]);
-    } else {
-        alert("domain is" + x[1]);
-        alert("Subdomain is" + x[0]);
-    }
-    return true;*/
+    var str=x;
+    var pattern=/(([A-z0-9]+[.])*)([A-z0-9]*[.][A-z]{3})[/]?/;
+    var result=str.match(pattern);
+    if(RegExp.$1!=null)
+    alert("SubDomain is  "+RegExp.$1)
+    alert("Domain is  "+ RegExp.$3);
+
 }

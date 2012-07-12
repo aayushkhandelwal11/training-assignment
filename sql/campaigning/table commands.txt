@@ -1,0 +1,16 @@
+create table data( email_id varchar(30), phn_no int, city varchar(15), primary key(email_id) );
+
+
+
+LOAD DATA INFILE '/home/bharat/db.txt' INTO TABLE data
+FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\n';
+
+
+
+select distinct city from data ;
+
+select city,count(*) as people_responded from data group by city;
+
+select city from data group by city order by count(*) desc limit 1;
+
+SELECT SUBSTRING_INDEX(SUBSTRING_INDEX( `email_id` , '@', -1),'.',1) AS a from data group by a order by count(*) desc limit 1;

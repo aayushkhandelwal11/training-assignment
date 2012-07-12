@@ -1,0 +1,86 @@
+create table users(
+id varchar(20),
+name varchar(40),
+primary key(id)
+);
+
+create table friends(
+user_id varchar(20),
+friend_id varchar(20),
+primary key(user_id,friend_id),
+foreign key(user_id) references users(id),
+foreign key(friend_id) references users(id)
+);
+
+create table images(
+image_id varchar(20),
+image_user varchar(20),
+primary key(image_id),
+foreign key(image_user) references users(id)
+);
+
+create table tags(
+image_id varchar(20),
+tagged varchar(20),
+primary key(image_id,tagged),
+foreign key(tagged) references users(id),
+foreign key(image_id) references images(image_id)
+);
+
+insert into users value("Aayush11","Aayush khandelwal");
+insert into users value("KD","Kuldeepak");
+insert into users value("devil","akshay vishnoi");
+insert into users value("nishant","Nishant");
+insert into users value("pappu","Apporv saxena");
+
+insert into friends values("Aayush11","KD");
+insert into friends values("Aayush11","devil");
+insert into friends values("devil","KD");
+insert into friends values("pappu","KD");
+insert into friends values("KD","Aayush11");
+insert into friends values("KD","devil");
+insert into friends values("KD","pappu");
+insert into friends values("devil","Aayush11");
+insert into friends values("pappu","nishant");
+insert into friends values("nishant","pappu");
+
+insert into images value("img1","Aayush11");
+insert into images value("img2","Aayush11");
+insert into images value("img3","Aayush11");
+insert into images value("img4","KD");
+insert into images value("img5","pappu");
+insert into images value("img6","devil");
+insert into images value("img7","KD");
+insert into images value("img8","nishant");
+insert into images value("img9","nishant");
+
+
+
+insert into tags value ("img1","KD");
+insert into tags value ("img2","KD");
+insert into tags value ("img1","devil");
+insert into tags value ("img2","devil");
+insert into tags value ("img4","devil");
+insert into tags value ("img4","Aayush11");
+insert into tags value ("img4","pappu");
+insert into tags value ("img8","pappu");
+insert into tags value ("img6","Aayush11");
+insert into tags value ("img6","KD");
+
+select image_id from tags group by image_id order by count(*) desc limit 1;
+
+
+//2 solutions to second query
+select image_id from images where image_user in ( select friend_id from friends where user_id="Aayush11")
+select image_id from images i inner join friends f on i.image_user=f.friend_id where user_id="Aayush11";
+
+//question 3
+
+select image_user from images i inner join tags t on t.image_id=i.image_id where t.tagged="Aayush11" group by image_user having count(*)
+ in (select count(*) from images it where it.image_user=i.image_user); 
+ 
+ 
+select image_user from images i inner join tags t on t.image_id=i.image_id where t.tagged="KD" group by image_user order by count(*) desc limit 1; 
+
+
+

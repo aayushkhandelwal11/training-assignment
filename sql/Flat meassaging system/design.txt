@@ -1,0 +1,38 @@
+database consist of 3 tables
+1) user tablle
+attributes 
+1.1)user_id(primary key) will be assigned to user
+1.2)other user details that are needed on signup
+
+
+2)messaging table
+2.1) message_id(primary key) : a unique message id assigned to each conversation.
+2.2) origin_user( foreign key refrencing user_id of user) contains the userid who created message,,can be null
+2.3) message_destined( foreign key refrencing user_id of user) contains the userid to whom message is destined,can be null
+
+3)thread
+2.1)thread_id (primary key) :a unique id that will be assigned to each thread
+2.2)message_id(foreign key message_id from messaging table) : contains the message id to which the thread belongs to
+2.3)thread description: content of the thread 
+2.4)thread_createdbyid( foreign key refrencing user_id of user): user_id wo created the thread
+2.5)thread_read: a single bit to see whether it is read or not.(u for unread r for read)
+
+
+
+functionalities implementation
+1)whenever a user sign up his data will be recorded in user table
+2) whenver a new message is sent then 2 entries will be done 1 in messaging table other in thread table.
+like if userA sent hi to userB,userC then it will be inserted as
+messaging(1,"userA","userB"),messaging(2,"userA","userC")
+thread(1,1,"hi","userA",'u'),thread(2,2,"hi","userA",'u')
+3) whenever the userC checks the thread the u in the last column will be changed to r
+4) whenever the userC replies then a new thread will be added
+thread(3,2,"hello",'u')
+and so on fro the replies
+5)when a user want to see the message converstaion then all the threads will be shown to him corresponding to the message id.
+6) deletion :
+2 types of deletion possible
+6.1) deletion of thread .it will be deleted from the database and now both users cant see it
+6.2) deletion of message : 
+if their is a message entry like(4,"userA","userC"). and userC deletes thread then we will update it to(4,"null","userC")
+if userC deleted it then (4,"userA",null)

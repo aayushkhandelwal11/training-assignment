@@ -6,7 +6,13 @@ def factorial(n)
   end
 end
 puts "enter the no for factorial"
-word=gets.chomp
-puts factorial(word.to_i)
+answer = gets.chomp
+  case answer
+  when /^\d+$/
+    puts factorial(answer.to_i)
+  else
+    puts "Please enter a number "
+  end
+
 
 

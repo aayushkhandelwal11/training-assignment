@@ -25,5 +25,11 @@ end
 end
 
 puts 'How many rows do you want?'
-max_row = gets.chomp.to_i
-pascal(max_row) {|x| print "#{x}"}
+answer = gets.chomp
+  case answer
+  when /^\d+$/
+   pascal(answer.to_i) {|x| print "#{x}"}
+  else
+    puts "Please enter a number "
+  end
+

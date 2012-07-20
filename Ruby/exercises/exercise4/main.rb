@@ -16,6 +16,6 @@ loop do
   when 'q','Q'
     break
   else
-    palindrome(answer)
+    palindrome(answer.to_i)
   end
 end

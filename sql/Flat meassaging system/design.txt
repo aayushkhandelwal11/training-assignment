@@ -1,4 +1,4 @@
-database consist of 3 tables
+ database consist of 3 tables
 1) user tablle
 attributes 
 1.1)user_id(primary key) will be assigned to user

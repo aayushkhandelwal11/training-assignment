@@ -1,5 +1,5 @@
-require_relative 'berserk_player'
-
+require 'studio_game/berserk_player'
+module StudioGame
 describe BerserkPlayer do
   
   before do
@@ -26,4 +26,5 @@ describe BerserkPlayer do
     @player.health.should == @initial_health + (8 * 10)
   end
 
+end
 end

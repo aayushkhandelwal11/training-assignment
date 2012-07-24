@@ -3,6 +3,7 @@ require_relative 'die'
 require_relative 'game_turn'
 require_relative 'treasure_trove'
 require 'csv'
+module StudioGame
 class Game
 attr_reader :name
 def initialize(name)
@@ -88,4 +89,4 @@ def total_points
 end
 
 end
-
+end

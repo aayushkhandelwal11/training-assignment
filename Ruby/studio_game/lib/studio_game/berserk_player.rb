@@ -1,5 +1,5 @@
 require_relative 'player'
-
+module StudioGame
 class BerserkPlayer < Player
 def initialize(name,health)
 super(name,health)
@@ -30,4 +30,5 @@ if __FILE__ == $0
   6.times { berserker.woo }
   2.times { berserker.blam }
   puts berserker.health
+end
 end

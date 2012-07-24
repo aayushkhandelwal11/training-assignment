@@ -1,20 +1,16 @@
 require_relative 'treasure_trove'
+require_relative 'playable'
+module StudioGame
 class Player
-attr_accessor :name
-attr_reader :health
+include Playable
+attr_accessor :name,:health
+
 def initialize(name,health=0)
 @name=name.capitalize
 @health=health
 @found_treasures = Hash.new(0)
 end
-def woo
-@health+=10
-end
 
-def blam
-@health-=10
-
-end
 def score
   @health+  points
 end
@@ -31,9 +27,7 @@ end
 def to_s
    "#{@name}'s health is #{@health} and score is #{score}"
 end
-def strong?
-  @health > 60 
-end
+
 def <=>(other)
     other.health <=> health 
 end
@@ -55,4 +49,5 @@ if __FILE__ == $0
   puts player.health
   player.blam
   puts player.health
+end
 end

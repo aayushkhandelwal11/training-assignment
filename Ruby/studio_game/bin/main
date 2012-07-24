@@ -1,6 +1,8 @@
-require_relative 'game'
-knuckleheads = Game.new("Knuckleheads")
-knuckleheads.load_players(ARGV.shift || "players.csv")
+#!/usr/bin/env ruby
+require_relative '../lib/studio_game/game'
+knuckleheads = StudioGame::Game.new("Knuckleheads")
+default_player_file = File.join(File.dirname(__FILE__), 'players.csv')
+knuckleheads.load_players(ARGV.shift || default_player_file)
 loop do
   puts "\nHow many game rounds? ('quit' to exit)"
   answer = gets.chomp.downcase

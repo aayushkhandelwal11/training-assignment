@@ -1,4 +1,5 @@
-require_relative 'game'
+require 'studio_game/game'
+module StudioGame
 describe Game do
 before do
 @knuckleheads=Game.new("Knuckleheads")
@@ -54,5 +55,6 @@ it "computes total points as the sum of all player points" do
   player2.found_treasure(Treasure.new(:crowbar, 400))
   
   game.total_points.should == 500
+end
 end
 end

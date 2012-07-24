@@ -1,5 +1,5 @@
-require_relative 'clumsy_player'
-
+require 'studio_game/clumsy_player'
+module StudioGame
 describe ClumsyPlayer do
   before do
     @player = ClumsyPlayer.new("klutz")
@@ -39,9 +39,10 @@ describe ClumsyPlayer do
   end
 
   it "gets boost factor number of w00ts when w00ted" do
-    @player.w00t
+    @player.woo
 
-    @player.health.should == @initial_health + (15 * @boost_factor)
+    @player.health.should == @initial_health + (10 * @boost_factor)
   end
+end
 end
 end

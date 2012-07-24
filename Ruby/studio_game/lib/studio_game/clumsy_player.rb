@@ -1,4 +1,5 @@
 require_relative 'player'
+module StudioGame
 class ClumsyPlayer<Player
 attr_reader :boost_factor
   
@@ -7,7 +8,7 @@ attr_reader :boost_factor
     @boost_factor = boost_factor
   end
   
-  def w00t
+  def woo
     @boost_factor.times { super }
   end
 
@@ -32,4 +33,5 @@ if __FILE__ == $0
     puts "#{treasure.points} total #{treasure.name} points"
   end
   puts "#{clumsy.points} grand total points"
+end
 end

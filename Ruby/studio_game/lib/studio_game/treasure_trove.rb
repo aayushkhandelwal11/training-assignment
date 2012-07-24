@@ -1,3 +1,4 @@
+module StudioGame
 Treasure = Struct.new(:name,:points)
 
 module TreasureTrove
@@ -13,4 +14,5 @@ TREASURES=[
 def self.random
     TREASURES.sample
   end
+end
 end

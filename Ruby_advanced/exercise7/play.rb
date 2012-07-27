@@ -3,15 +3,18 @@ class Play
 
 attr_accessor :age ,:fname, :email 
 
-def initialize(age=1,fname="ax",email="ax")
+def initialize(age=0,fname=nil,email=nil)
 	@age=age.to_i
 	@fname=fname
 	@email=email
+    
 end
 include MyObjectStore
-validate_presence_of :fname,:email
+def to_s 
+  "#{@fname} of #{@age} with email id #{@email}"
+end	
 
 def validate
-	false
+	validate_presence_of :fname,:email
 end 
 end

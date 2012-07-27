@@ -1,7 +1,7 @@
 def palindrome(string)
-a=string.reverse
+reversestring=string.reverse
 
-  if a==string
+  if reversestring==string
     puts "Its an palindrome"
   else
     puts "its not an palindrome"
@@ -16,6 +16,6 @@ loop do
   when 'q','Q'
     break
   else
-    palindrome(answer.to_i)
+    palindrome(answer.to_s)
   end
 end

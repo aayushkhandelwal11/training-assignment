@@ -1,6 +1,5 @@
 def fibo(limit)
-     yield 1 
-     a = 1
+     a = 0
      b = 1
      while (a < limit)
          yield a

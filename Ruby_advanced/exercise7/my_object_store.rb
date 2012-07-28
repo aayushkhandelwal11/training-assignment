@@ -16,7 +16,7 @@ def self.included(subclass)
     subclass.class_eval do
         def validate_presence_of *var
 
-	    	var.each do |variable|
+	      	var.each do |variable|
 	    		variable="@".to_s+variable.to_s
 	    		
 	    		if self.instance_variable_get(variable) == nil 

@@ -4,7 +4,6 @@ class Array
 
       for item in self
             @hash[item.to_s.length]+=[item]
-                  
       end
       puts @hash
       

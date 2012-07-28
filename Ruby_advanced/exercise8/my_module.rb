@@ -2,8 +2,12 @@ module MyModule
    def chained_aliasing *var
       self.class_eval do 
       		var.each do |meth|
-      			   
-      			if  meth.to_s.include?"?"
+      			   m=self.new
+      			   list= m.private_methods-Object.methods
+      			   if list.include?(meth)
+                      private 
+                   end   
+      			   if  meth.to_s.include?"?"
       			    k=meth.to_s.chomp('?').to_sym
       			    old="#{k}_without_logging?"
       			    newmeth="#{k}_with_logging?"

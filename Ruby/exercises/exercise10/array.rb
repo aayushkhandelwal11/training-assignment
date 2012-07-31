@@ -9,7 +9,7 @@ class Array
       puts @hash
        
          result=   @hash.inject({}) do |grouped, (k,v)|
-            r = if k%2==1 then 'odd' else 'even' end
+            r = k%2==1 ? 'odd' : 'even'
             grouped[r] = [] if grouped[r].nil?
             grouped[r] << v
             grouped

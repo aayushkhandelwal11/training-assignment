@@ -6,7 +6,7 @@ puts "enter the power"
 answer=gets.chomp
   case answer
   when /^\d+$/
-    puts array.pow(answer.to_i).to_s
+    puts array.pow!(answer.to_i).to_s
   else
     puts "Please enter a number or 'quit'"
   end

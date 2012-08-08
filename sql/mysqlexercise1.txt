@@ -72,7 +72,7 @@ mysql> desc training_details;
 
 5)changing datatype of rollno from varchar to int
 
- alter table training_details change rollno rollno int;
+alter table training_details change rollno rollno int;
 Query OK, 0 rows affected (0.43 sec)
 Records: 0  Duplicates: 0  Warnings: 0
 

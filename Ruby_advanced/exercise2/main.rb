@@ -12,7 +12,6 @@ loop do
           string<<answer<<"\n"
         else
           result=eval(string)
-         
           string="#!/usr/bin/env ruby\n"
         end
    end

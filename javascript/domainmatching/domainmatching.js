@@ -12,4 +12,9 @@ function fndomain() {
     alert("SubDomain is  "+RegExp.$1)
     alert("Domain is  "+ RegExp.$3);
 
+
 }
+
+
+
+

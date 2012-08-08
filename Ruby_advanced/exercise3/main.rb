@@ -4,11 +4,14 @@ end
 puts "Enter the name of the method"
 method_name=gets.chomp
 
-PublicCode.instance_eval do
+PublicCode.class_eval do
    puts "Enter the code for it"
-   @code=gets.chomp
-    def method_name
-     eval (@code)
+   code=gets.chomp
+    define_method method_name do
+     eval (code)
     end
 end
-PublicCode.method_name
+a=PublicCode.new
+a.send(method_name)
+
+

@@ -35,6 +35,7 @@ function cal() {
 	    p = document.createTextNode(mainStore[i].name);
        	    li.text = mainStore[i].name;
             li.onclick = function () {
+                 alert("hello")
                 show(this.text);
             }
 	    li.appendChild(p,1); 

@@ -1,6 +1,8 @@
-require_relative 'inverse_case'
+class String
+ def to_s
+  self.swapcase
+ end
+end
 puts "enter the word"
 word=gets.chomp
-word1=InverseCase.new(word)
-puts word1
-
+puts word.to_s

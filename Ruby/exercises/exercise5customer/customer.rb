@@ -6,9 +6,6 @@ class Customer
      @@ids +=1
      @accountno = @@ids
   end
-  def increment_accountno
-    @accountno += 1
-  end
   def deposit(amount)
     @balance += amount
   end

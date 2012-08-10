@@ -1,17 +1,6 @@
-def find(sentence,word)
-array= sentence.split(" ").to_a
-count =0
-array.map! do |i| 
-if i==word 
-count+=1 
-i="("+i+")"
-
-else
-i
-end
-end
-puts array.join(" ")
-puts count
+def find(sentence,pattern)
+	puts sentence.gsub!(/(?<match>#{pattern})/i, '(\k<match>)') 
+  puts sentence.scan(/#{pattern}/i).length
 end
 puts "enter the sentence"
 sentence= gets.chomp

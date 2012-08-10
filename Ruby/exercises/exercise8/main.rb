@@ -1,6 +1,6 @@
 class Array
   def power(factor)
-    self.map! { |x| x **factor }   
+    self.map { |x| x **factor }   
   end
 end  
 arr=[1,6,3,7,89]

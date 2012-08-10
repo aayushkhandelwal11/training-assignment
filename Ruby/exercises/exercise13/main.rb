@@ -1,13 +1,9 @@
-def factorial(n)
-   case n
-  when 0..1 then 1
-  else
-    n * factorial( n - 1 )
-  end
+def factorial(num)
+  (1..num).inject {|fact, n| fact * n}
 end
 puts "enter the no for factorial"
 answer = gets.chomp
-  case answer
+	case answer
   when /^\d+$/
     puts factorial(answer.to_i)
   else

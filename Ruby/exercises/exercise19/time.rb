@@ -1,4 +1,4 @@
-require 'time'
+class Time
 def sum_time(time_array)
   days = 0
   hours = 0
@@ -15,27 +15,7 @@ def sum_time(time_array)
     
   end
   print "#{days} days & " if days > 0
-  puts Time.parse("#{hours}:#{minutes}:#{seconds}").strftime('%T')
+  puts Time.parse("#{hours}:#{minutes}:#{seconds}")
   
 end
-
-
-array=Array.new()
-loop do
-  puts "enter the time(q to stop)"
-  subject =gets.chomp
-  pattern=/^(?:(?:([01]?\d|2[0-3]):)([0-5]?\d):)([0-5]?\d)$/
- case subject
- when 'q','Q'  
-    sum_time(array)
-   break
- else
-     time1 =pattern.match(subject)
-     if(time1==nil)
-         puts "invalid time"
-     else
-      array<<time1.to_s
-      end
-  end 
-end     
-
+end

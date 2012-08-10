@@ -11,9 +11,9 @@ class StringExtended <String
    end
    
    def replace(old)
-   puts old[0]
-   puts old[1]
-   puts @value.gsub(old[0].to_s,old[1].to_s)
+   puts "old value  "+old[0]
+   puts "new value  "+old[1]
+   puts "new sentence  "+@value.gsub(old[0].to_s,old[1].to_s)
  
     end
    def to_s

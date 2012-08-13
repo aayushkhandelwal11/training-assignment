@@ -4,10 +4,10 @@ module MyModule
       		var.each do |meth|
       		     func=meth
       			   m=self.new
-      			   list= m.private_methods-Object.methods
-      			   if list.include?(meth)
-                      private 
-              end   
+     
+      			   listprivate= m.private_methods-Object.private_methods
+      			   listprotected= m.protected_methods-Object.protected_methods
+      			  
               sign=""
              	if  meth.to_s.include?"!"
       			   		sign="!"
@@ -25,6 +25,11 @@ module MyModule
                 	  res = send old, *args
                 	  puts "--loging end"
                 end
+                if listprivate.include?meth
+                  private meth
+                elsif listprotected.include? meth
+                  protected meth  
+                end  
             	alias_method newmeth, meth 
       	end
      end   

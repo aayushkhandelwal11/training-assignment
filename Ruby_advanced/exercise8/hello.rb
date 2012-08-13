@@ -7,6 +7,10 @@ class Hello
 	def put?
 		p "putting"
 	end	
-	chained_aliasing :greet,:put?
+	private
+	def say!
+	  p "says"
+	end  
+	chained_aliasing :greet,:put?,:say!
 
 end

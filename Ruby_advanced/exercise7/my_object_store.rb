@@ -48,7 +48,7 @@ def self.included(subclass)
       	end
 
     end          
-  	  end	 
+    end	 
     def count
 		  puts "matchiong records"
       puts self.instance_variable_get(:@result)

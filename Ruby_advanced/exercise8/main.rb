@@ -1,5 +1,6 @@
 require_relative 'hello'
 h=Hello.new
+Hello.hellos
 puts "new greet"
 h.greet
 puts "without logging"

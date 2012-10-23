@@ -1,4 +1,3 @@
-
 puts "enter the name"
 subject =gets.chomp
 pattern=/[aeiouAEIOU]/

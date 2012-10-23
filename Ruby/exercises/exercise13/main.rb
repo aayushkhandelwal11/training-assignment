@@ -3,12 +3,12 @@ def factorial(num)
 end
 puts "enter the no for factorial"
 answer = gets.chomp
-	case answer
+case answer
   when /^\d+$/
     puts factorial(answer.to_i)
   else
     puts "Please enter a number "
-  end
+end
 
 
 

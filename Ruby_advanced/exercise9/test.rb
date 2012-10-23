@@ -1,5 +1,6 @@
 require_relative 'my_module'
 class Test
+  extend MyModule
 	def initialize
 
 	end
@@ -12,8 +13,12 @@ class Test
 	def tata
 		puts "sainora"
 	end	
-    extend MyModule
+	def say
+	   puts "say"
+	end   
+    
 
-    before_filter :foo,:only=>[:tata]
-    after_filter :byee,:except=>[:foo]
+    before_filter :foo
+    after_filter :byee
+    before_filter :tata,:only=>[:say]
 end

@@ -1,6 +1,6 @@
 class Occurence
 
-def initialize
+ def initialize
  @hash_occur = Hash.new(0)
  end
  
@@ -10,7 +10,7 @@ def initialize
     @hash_occur[i] +=1  
   
   end
-end
+ end
  
  def output
    @hash_occur

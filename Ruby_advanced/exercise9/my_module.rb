@@ -1,6 +1,12 @@
 module MyModule
 def before_filter *var
- result ||=Array.new
+  if @res == nil 
+    result=Array.new
+    @res=Array.new  
+  else
+     result=@res 
+  end   
+
  result=result.concat(var)
  list_of_methods=instance_methods - Object.methods
  var.each do |method|
@@ -11,7 +17,10 @@ def before_filter *var
      a= method.to_s.split("[:")[1].split("]")[0]
      list_of_methods.delete(a.to_sym)
      var.pop
-   end 
+   else 
+   @res.push(method)
+   end
+ 
  end
  list_of_methods.each do |name|
    m = instance_method(name)
@@ -28,12 +37,21 @@ def before_filter *var
      m.bind(self).(*args, &block)
   end
  end	 
+
 end
+
 def after_filter *var
-  result ||=Array.new
+   if @res == nil 
+    result=Array.new
+    @res=Array.new  
+  else
+     result=@res 
+   end 
   result=result.concat(var)
+ 
   list_of_methods=instance_methods - Object.methods
   var.each do |method|
+   
     if(method.to_s).index("only")
       list_of_methods=[method.to_s.split("[:")[1].split("]")[0]]
       var.pop
@@ -41,8 +59,11 @@ def after_filter *var
       a= method.to_s.split("[:")[1].split("]")[0]
       list_of_methods.delete(a.to_sym)
       var.pop
-    end 
+     else 
+      @res.push(method)
+     end
   end
+
   list_of_methods.each do |name|
     m = instance_method(name)
     define_method(name) do |*args, &block|  
@@ -58,5 +79,6 @@ def after_filter *var
       end 
     end
   end	 
+   
 end
 end

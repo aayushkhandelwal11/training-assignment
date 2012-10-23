@@ -15,10 +15,9 @@ class StringExtended <String
    puts "new value  "+old[1]
    puts "new sentence  "+@value.gsub(old[0].to_s,old[1].to_s)
  
-    end
+   end
    def to_s
      puts "#{@value}"
-   
    end
 end
 

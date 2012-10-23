@@ -4,11 +4,9 @@ module MyModule
       		var.each do |meth|
       		     func=meth
       			   m=self.new
-     
-      			   listprivate= m.private_methods-Object.private_methods
+             listprivate= m.private_methods-Object.private_methods
       			   listprotected= m.protected_methods-Object.protected_methods
-      			  
-              sign=""
+               sign=""
              	if  meth.to_s.include?"!"
       			   		sign="!"
       			   		func= meth.to_s.chop!.to_sym     

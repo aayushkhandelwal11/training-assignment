@@ -1,0 +1,24 @@
+We can now share anything on facebook by just sending some parameter to "http://www.facebook.com/sharer.php?"
+in the param 'u'(url) we have to pass the url which we want to share on facebook.
+
+for eg
+<%= link_to image_tag('fb_share.png'), "http://www.facebook.com/sharer.php?u=wisdom.vinsol.com/#{current_user.username}", :onclick=>"window.open(this.href,'create_company', 'height=200, width=600');return false;"%>
+
+in this case i want to share the users profile link on facebook so in the parameter 'u' i have passed the url link.
+
+this will by default share a simple link on facebook but if we want to make the link more expressive we can do it by meta tags
+
+like
+
+
+ <meta property="og:title" content="View my profile" />
+  <meta property="og:description" content="Wisdom 2.0 summit" />
+  <meta property="og:image" content="/wisdom.jpg"/>
+
+these meta tags will come in the head section of the html page
+
+
+their are many other meta tags about which you can read from here
+https://developers.facebook.com/docs/opengraphprotocol/
+
+by falling these steps you can easily share a link through facebook without using any gem

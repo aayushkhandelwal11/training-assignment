@@ -21,4 +21,4 @@ these meta tags will come in the head section of the html page
 their are many other meta tags about which you can read from here
 https://developers.facebook.com/docs/opengraphprotocol/
 
-by falling these steps you can easily share a link through facebook without using any gem
+by following these steps you can easily share a link through facebook without using any gem
